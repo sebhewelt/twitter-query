@@ -45,10 +45,12 @@ const json2csvParser = new Parser({
 (async () => {
   try {
     // Make request
+    // By default, only the Tweet ID and text fields are returned. More: https://developer.twitter.com/en/docs/twitter-api/data-dictionary/object-model/tweet
     const params = {
       query: `from:${username} -is:retweet`,
       "tweet.fields": queryfields.join(),
     };
+
     const response = await getRequest(username, endpointUrl, params);
     const { data } = response;
 
